@@ -49,7 +49,7 @@ El propósito es fortalecer mi identidad profesional desde el diseño estratégi
 ### Usuario Promedio – Sofía Contreras
 
 <p align="left">
-  <img src="Referentes/2.png" width="300" align="left" alt="Sofía Contreras" />
+  <img src="Referentes/1.png" width="250" align="left" alt="Sofía Contreras" />
   
   <b>Cargo:</b> Estudiante de último año de Diseño con enfoque estratégico<br>
   <b>Edad:</b> 23 años<br><br>
@@ -57,6 +57,7 @@ El propósito es fortalecer mi identidad profesional desde el diseño estratégi
   <i><b>Rol en el ecosistema del diseño:</b></i><br>
   Representa el punto medio entre la formación académica y la práctica profesional. Busca entender cómo aplicar el pensamiento estratégico en contextos reales, conectando la teoría con la acción.
 </p>
+<br clear="left"/>
 
 <p><i><b>Comportamientos y creencias:</b></i><br>
 • Cree que el diseño estratégico es una herramienta para pensar, investigar y transformar contextos sociales o culturales.<br>
@@ -79,7 +80,7 @@ El propósito es fortalecer mi identidad profesional desde el diseño estratégi
 • <b>Colaboración interdisciplinaria:</b> Proyectos que evidencien trabajo con comunidades, ingeniería u otras disciplinas.<br>
 • <b>Claridad metodológica:</b> Entender qué herramientas y métodos se usaron en cada etapa del proyecto.<br>
 • <b>Coherencia visual-conceptual:</b> Ver cómo la identidad visual refuerza el discurso estratégico del portafolio.
-</p>
+</p># Portafolio Profesional
 
 ---
 
