@@ -1,40 +1,4 @@
 # Portafolio Ambar
-### Usuario Promedio – Sofía Contreras
-
-<p align="left">
-  <img src="Referentes/Usuarios/sofia.png" width="250" align="left" alt="Sofía Contreras" />
-  
-  <b>Cargo:</b> Estudiante de último año de Diseño con enfoque estratégico<br>
-  <b>Edad:</b> 23 años<br><br>
-  
-  <i><b>Rol en el ecosistema del diseño:</b></i><br>
-  Representa el punto medio entre la formación académica y la práctica profesional. Busca entender cómo aplicar el pensamiento estratégico en contextos reales, conectando la teoría con la acción.
-</p>
-<br clear="left"/>
-
-<p><i><b>Comportamientos y creencias:</b></i><br>
-• Cree que el diseño estratégico es una herramienta para pensar, investigar y transformar contextos sociales o culturales.<br>
-• Se interesa por proyectos con propósito y reflexión, más que por la estética aislada.<br>
-• Revisa constantemente portafolios de diseñadores para inspirarse o entender cómo narrar procesos de forma clara.<br>
-• Prefiere páginas simples, bien estructuradas y que expliquen cómo se llegó a las soluciones.<br>
-• Valora el aprendizaje a través de referentes que integren investigación, creatividad y estrategia.
-</p>
-
-<p><i><b>Necesidades y objetivos:</b></i><br>
-• Comprender cómo se comunican procesos complejos dentro del diseño estratégico.<br>
-• Encontrar ejemplos que le ayuden a estructurar su propio portafolio o discurso profesional.<br>
-• Inspirarse en diseñadoras que combinen pensamiento analítico con sensibilidad estética.<br>
-• Aprender cómo mostrar la coherencia entre problema, metodología y resultado.
-</p>
-
-<p><i><b>Qué busca en mi portafolio:</b></i><br>
-• <b>Inspiración narrativa:</b> Ver cómo otras diseñadoras cuentan sus historias de diseño de forma clara y estructurada.<br>
-• <b>Ejemplos de proceso:</b> Portafolios que muestren el recorrido desde la investigación hasta la solución final.<br>
-• <b>Colaboración interdisciplinaria:</b> Proyectos que evidencien trabajo con comunidades, ingeniería u otras disciplinas.<br>
-• <b>Claridad metodológica:</b> Entender qué herramientas y métodos se usaron en cada etapa del proyecto.<br>
-• <b>Coherencia visual-conceptual:</b> Ver cómo la identidad visual refuerza el discurso estratégico del portafolio.
-</p># Portafolio Profesional
-
 ## Objetivo General
 
 Diseñar y desarrollar un portafolio digital profesional que comunique de manera clara, coherente y estratégica mi enfoque como diseñadora integral, destacando mi capacidad para vincular la investigación, la creatividad y la estrategia en el desarrollo de soluciones de diseño.
