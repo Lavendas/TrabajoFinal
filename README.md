@@ -233,7 +233,9 @@ El propósito es fortalecer mi identidad profesional desde el diseño estratégi
   </tr>
 </table>
 
+## Referentes
+Estos referentes se enfocan en diferentes tipos de vibras, ideas, formas, colores y tipografias para visualizar información que me interesaría recrear y utilizar en la narrativa de mi portafolio, así como tambien me inspiran de que manera puedo guarlos de manera facil en la web.
+<img src="img/moodboard.png"  align="center" alt="moodboard" />
 
-- `Referentes/sou.png` - Screenshot de https://souajoana.com/
-- `Referentes/aa.png` - Screenshot de https://www.a-andrea.it/
-- `Referentes/kota.png` - Screenshot de https://10-years.kota.co.uk/
+
+
