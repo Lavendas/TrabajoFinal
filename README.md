@@ -49,7 +49,7 @@ El propósito es fortalecer mi identidad profesional desde el diseño estratégi
 ### Usuario Promedio – Sofía Contreras
 
 <p align="left">
-  <img src="Referentes/1.png" width="250" align="left" alt="Sofía Contreras" />
+  <img src="Referentes/2.png" width="250" align="left" alt="Sofía Contreras" />
   
   <b>Cargo:</b> Estudiante de último año de Diseño con enfoque estratégico<br>
   <b>Edad:</b> 23 años<br><br>
@@ -189,8 +189,7 @@ El propósito es fortalecer mi identidad profesional desde el diseño estratégi
     </td>
     <td valign="top" align="center" width="33%">
         <source src="Referentes/kota.png" height="250">
-       
-      </video><br><br>
+      
     </td>
   </tr>
   <tr>
