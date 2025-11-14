@@ -235,7 +235,7 @@ El propósito es fortalecer mi identidad profesional desde el diseño estratégi
 
 ## Referentes
 Estos referentes se enfocan en diferentes tipos de vibras, ideas, formas, colores y tipografias para visualizar información que me interesaría recrear y utilizar en la narrativa de mi portafolio, así como tambien me inspiran de que manera puedo guarlos de manera facil en la web.
-<img src="img/moodboard.png"  align="center" alt="moodboard" />
+<img src="Referentes/moodboard.png"  align="center" alt="moodboard" />
 
 
 
