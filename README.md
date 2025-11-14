@@ -187,10 +187,8 @@ El propósito es fortalecer mi identidad profesional desde el diseño estratégi
     <td valign="top" align="center" width="33%">
       <img src="Referentes/aa.png" height="250"><br><br>
     </td>
-    <td valign="top" align="center" width="33%">
-        <source src="Referentes/kota.png" height="250">
-      
-    </td>
+   <td valign="top" align="center" width="33%">
+      <img src="Referentes/kota.png" height="250"><br><br>
   </tr>
   <tr>
     <td valign="top" width="33%">
