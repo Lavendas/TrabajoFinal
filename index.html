@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="style.css" type="text/css" href="style.css">
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
     * {
       margin: 0;
       padding: 0;
@@ -13,10 +15,10 @@
     }
 
     body {
-      font-family: 'Jua', sans-serif;
+      font-family: 'Raleway', sans-serif;
+      background: #FFFDF1;
+      color: #333;
       overflow-x: hidden;
-      background: #F5E6D3;
-      color: #2d3436;
     }
 
     /* LOADER */
@@ -26,232 +28,379 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      background: #F5E6D3;
+      background: #FFFDF1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
+      transition: opacity 0.6s ease;
     }
 
     #loader.hidden {
       opacity: 0;
-      visibility: hidden;
+      pointer-events: none;
     }
 
     .match-container {
       position: relative;
-      width: 300px;
-      height: 120px;
+      width: 400px;
+      height: 150px;
     }
 
-    .floor {
+    .match-floor {
       position: absolute;
-      bottom: 30px;
+      bottom: 40px;
       left: 0;
       width: 100%;
-      height: 3px;
-      background: #8B4513;
+      height: 8px;
+      background: #E22B02;
+      border-radius: 4px;
     }
 
-    .match {
+    .match-stick {
       position: absolute;
-      bottom: 33px;
-      width: 6px;
-      height: 60px;
-      background: #D2691E;
+      bottom: 48px;
+      width: 8px;
+      height: 80px;
+      background: linear-gradient(to bottom, #D2691E 0%, #8B4513 100%);
       animation: dragMatch 3s ease-in-out infinite;
       transform-origin: bottom center;
+      border-radius: 2px;
     }
 
     .match-head {
       position: absolute;
-      top: -8px;
+      top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      width: 12px;
-      height: 12px;
-      background: #C84A4A;
+      width: 16px;
+      height: 16px;
+      background: #E22B02;
       border-radius: 50% 50% 40% 40%;
     }
 
-    .spark {
+    .match-flame {
       position: absolute;
-      bottom: 0;
+      top: -30px;
       left: 50%;
-      width: 20px;
-      height: 20px;
-      background: #ff6b6b;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 40px;
+      opacity: 0;
+    }
+
+    .flame-outer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #E22B02 0%, #FF6B35 50%, transparent 70%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: flameFlicker 3s ease-in-out infinite;
+    }
+
+    .flame-inner {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 60%;
+      background: radial-gradient(ellipse at center, #FFF 0%, #FFD700 50%, transparent 70%);
+      border-radius: 50%;
+      animation: flameFlicker 3s ease-in-out infinite 0.1s;
+    }
+
+    .match-spark {
+      position: absolute;
+      bottom: 48px;
+      left: 50%;
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle, #FFD700 0%, #E22B02 50%, transparent 70%);
       border-radius: 50%;
       opacity: 0;
       animation: sparkle 3s ease-in-out infinite;
     }
 
     @keyframes dragMatch {
-      0% { left: 0; transform: rotate(-25deg); }
-      45% { left: calc(100% - 6px); transform: rotate(-25deg); }
-      50% { left: calc(100% - 6px); transform: rotate(0deg); }
-      55% { left: calc(100% - 6px); transform: rotate(0deg); }
-      100% { left: 0; transform: rotate(-25deg); }
+      0% { left: 0; transform: rotate(-30deg); }
+      45% { left: calc(100% - 8px); transform: rotate(-30deg); }
+      50% { left: calc(100% - 8px); transform: rotate(0deg); }
+      55% { left: calc(100% - 8px); transform: rotate(0deg); }
+      100% { left: 0; transform: rotate(-30deg); }
     }
 
     @keyframes sparkle {
-      0%, 100% { opacity: 0; transform: translateX(-50%) scale(0); }
-      20%, 40% { opacity: 0.8; transform: translateX(-50%) scale(1.2); }
-      25%, 35% { opacity: 0.4; transform: translateX(-50%) scale(0.8); }
+      0%, 15%, 100% { opacity: 0; transform: translateX(-50%) scale(0); }
+      45%, 55% { opacity: 1; transform: translateX(-50%) scale(1.5); }
+      47%, 53% { opacity: 0.5; transform: translateX(-50%) scale(0.8); }
+    }
+
+    @keyframes flameFlicker {
+      0%, 15%, 100% { opacity: 0; transform: translateX(-50%) scale(0); }
+      50%, 55% { opacity: 1; transform: translateX(-50%) scale(1); }
+      52% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
     }
 
     .loading-text {
-      margin-top: 40px;
+      margin-top: 60px;
       font-family: 'Lilita One', cursive;
-      font-size: 1.8rem;
-      color: #C84A4A;
+      font-size: 2.5rem;
+      color: #E22B02;
+      letter-spacing: 4px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* NAVIGATION */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 253, 241, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #E22B02;
+      box-shadow: 0 4px 15px rgba(226, 43, 2, 0.1);
+    }
+
+    .logo {
+      font-family: 'Lilita One', cursive;
+      font-size: 2rem;
+      color: #E22B02;
       letter-spacing: 2px;
+      text-shadow: 3px 3px 0 #5F84B0;
     }
 
-    /* MAIN CONTENT */
-    #main-content {
-      opacity: 0;
-      transition: opacity 1s ease;
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
     }
 
-    #main-content.visible {
-      opacity: 1;
+    .nav-links a {
+      text-decoration: none;
+      color: #5F84B0;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      position: relative;
     }
 
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #E22B02;
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #E22B02;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      background: #F5E6D3;
+      justify-content: center;
+      padding: 8rem 4rem;
+      text-align: center;
+      background: linear-gradient(135deg, #FFFDF1 0%, #FFE8D6 100%);
       position: relative;
+      overflow: hidden;
     }
 
-    .star {
-      width: 200px;
-      height: 200px;
-      position: relative;
-      margin-bottom: 3rem;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(95, 132, 176, 0.03) 20px,
+        rgba(95, 132, 176, 0.03) 40px
+      );
+      animation: slidePattern 20s linear infinite;
     }
 
-    .star svg {
-      width: 100%;
-      height: 100%;
-      fill: #C84A4A;
+    @keyframes slidePattern {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(40px, 40px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
     }
 
     .hero h1 {
       font-family: 'Lilita One', cursive;
       font-size: 8rem;
-      color: #C84A4A;
-      margin-bottom: 0.5rem;
-      letter-spacing: -3px;
+      color: #E22B02;
+      margin-bottom: 1rem;
+      letter-spacing: 8px;
+      text-shadow: 5px 5px 0 #5F84B0, 10px 10px 0 rgba(95, 132, 176, 0.3);
+      animation: floatTitle 3s ease-in-out infinite;
+    }
+
+    @keyframes floatTitle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     .hero p {
-      font-family: 'Jua', sans-serif;
-      font-size: 1.8rem;
-      color: #4A7C9E;
-      letter-spacing: 1px;
+      font-size: 1.5rem;
+      color: #5F84B0;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
     }
 
-    /* TIMELINE */
-    .timeline {
-      padding: 5rem 2rem;
-      background: #F5E6D3;
-    }
-
-    .timeline-item {
+    /* ABOUT SECTION */
+    #sobre-mi {
+      min-height: 60vh;
+      padding: 8rem 4rem;
       max-width: 1000px;
-      margin: 0 auto 8rem auto;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease;
+      margin: 0 auto;
+      position: relative;
     }
 
-    .timeline-item.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .year {
+    #sobre-mi h2 {
       font-family: 'Lilita One', cursive;
-      font-size: 6rem;
-      color: #4A7C9E;
-      text-align: center;
-      margin-bottom: 2rem;
-      letter-spacing: -2px;
+      font-size: 4rem;
+      letter-spacing: 4px;
+      margin-bottom: 3rem;
+      color: #5F84B0;
+      text-shadow: 3px 3px 0 #E22B02;
     }
 
-    .timeline-item:nth-child(even) .year {
-      color: #C84A4A;
+    #sobre-mi p {
+      font-size: 1.2rem;
+      line-height: 2;
+      color: #333;
+      font-weight: 400;
+    }
+
+    /* PROJECTS SECTION */
+    #proyectos {
+      padding: 4rem 2rem;
+      background: #FFFDF1;
+    }
+
+    .section-title {
+      font-family: 'Lilita One', cursive;
+      font-size: 5rem;
+      text-align: center;
+      color: #E22B02;
+      text-shadow: 4px 4px 0 #5F84B0;
+      margin-bottom: 6rem;
+      letter-spacing: 6px;
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
     }
 
     .project-card {
-      border: 2px solid #C84A4A;
-      padding: 0;
+      background: #FFF;
+      border: 5px solid #5F84B0;
       cursor: pointer;
       transition: all 0.3s ease;
-      background: #F5E6D3;
+      position: relative;
       overflow: hidden;
-    }
-
-    .timeline-item:nth-child(even) .project-card {
-      border-color: #4A7C9E;
+      box-shadow: 8px 8px 0 rgba(95, 132, 176, 0.2);
     }
 
     .project-card:hover {
-      transform: scale(1.02);
-      box-shadow: 5px 5px 0 rgba(200, 74, 74, 0.3);
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0 rgba(226, 43, 2, 0.3);
+      border-color: #E22B02;
     }
 
-    .timeline-item:nth-child(even) .project-card:hover {
-      box-shadow: 5px 5px 0 rgba(74, 124, 158, 0.3);
-    }
-
-    .project-image {
+    .project-card-image {
       width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #C84A4A 0%, #4A7C9E 100%);
+      height: 350px;
+      background: linear-gradient(135deg, #5F84B0 0%, #E22B02 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Jomhuria', cursive;
-      font-size: 3rem;
-      color: #F5E6D3;
-    }
-
-    .project-info {
-      padding: 1.5rem;
-    }
-
-    .project-title {
       font-family: 'Lilita One', cursive;
-      font-size: 1.8rem;
-      color: #C84A4A;
+      font-size: 4rem;
+      color: #FFFDF1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-card-info {
+      padding: 2rem;
+      background: #FFFDF1;
+    }
+
+    .project-card-number {
+      font-family: 'Lilita One', cursive;
+      font-size: 1.2rem;
+      color: #E22B02;
       margin-bottom: 0.5rem;
     }
 
-    .timeline-item:nth-child(even) .project-title {
-      color: #4A7C9E;
+    .project-card-title {
+      font-family: 'Lilita One', cursive;
+      font-size: 2rem;
+      color: #5F84B0;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
     }
 
-    .project-desc {
+    .project-card-desc {
       font-size: 1rem;
-      line-height: 1.6;
-      color: #2d3436;
+      line-height: 1.8;
+      color: #333;
+      font-weight: 400;
     }
 
-    /* MODAL */
+    .project-card-year {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #E22B02;
+      font-weight: 600;
+    }
+
+    /* MODAL/GALLERY */
     .modal {
       display: none;
       position: fixed;
@@ -259,305 +408,570 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.95);
       z-index: 1000;
       overflow-y: auto;
-      padding: 2rem;
     }
 
     .modal.active {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .modal-content {
-      background: #F5E6D3;
-      max-width: 900px;
-      width: 100%;
-      padding: 3rem;
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 4rem 3rem;
+      background: #FFFDF1;
       position: relative;
-      border: 3px solid #C84A4A;
+      border: 6px solid #E22B02;
+      box-shadow: 0 0 50px rgba(226, 43, 2, 0.5);
     }
 
-    .close-modal {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #C84A4A;
+    .modal-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid #5F84B0;
+    }
+
+    .modal-back {
       font-family: 'Lilita One', cursive;
-      border: none;
+      font-size: 1.2rem;
+      color: #5F84B0;
       background: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .modal-back:hover {
+      color: #E22B02;
+      transform: translateX(-5px);
     }
 
     .modal-title {
       font-family: 'Lilita One', cursive;
-      font-size: 3rem;
-      color: #C84A4A;
-      margin-bottom: 2rem;
+      font-size: 3.5rem;
+      color: #E22B02;
+      text-shadow: 3px 3px 0 #5F84B0;
+      letter-spacing: 3px;
     }
 
-    .modal-images {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .modal-image {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(135deg, #4A7C9E 0%, #C84A4A 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Jomhuria', cursive;
-      font-size: 2.5rem;
-      color: #F5E6D3;
-      border: 2px solid #4A7C9E;
+    .modal-year {
+      font-family: 'Lilita One', cursive;
+      font-size: 2rem;
+      color: #5F84B0;
     }
 
     .modal-description {
+      font-size: 1.3rem;
+      line-height: 2;
+      color: #333;
+      margin-bottom: 3rem;
+      font-weight: 400;
+    }
+
+    .modal-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background: rgba(95, 132, 176, 0.1);
+      border: 3px solid #5F84B0;
+    }
+
+    .detail-item h4 {
+      font-family: 'Lilita One', cursive;
       font-size: 1.2rem;
-      line-height: 1.8;
-      color: #2d3436;
-      margin-bottom: 1.5rem;
+      color: #E22B02;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .detail-item p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .modal-gallery {
+      margin-bottom: 3rem;
+    }
+
+    .modal-gallery h3 {
+      font-family: 'Lilita One', cursive;
+      font-size: 2.5rem;
+      color: #5F84B0;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 0 #E22B02;
+      letter-spacing: 2px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .gallery-item {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #E22B02 0%, #5F84B0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lilita One', cursive;
+      font-size: 2.5rem;
+      color: #FFFDF1;
+      border: 4px solid #5F84B0;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      border-color: #E22B02;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .modal-process {
-      border-top: 2px solid #4A7C9E;
-      padding-top: 1.5rem;
+      padding: 3rem;
+      background: rgba(226, 43, 2, 0.05);
+      border: 3px solid #E22B02;
     }
 
     .modal-process h3 {
       font-family: 'Lilita One', cursive;
-      font-size: 2rem;
-      color: #4A7C9E;
-      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      color: #E22B02;
+      margin-bottom: 2rem;
+      letter-spacing: 2px;
     }
 
     .modal-process p {
       font-size: 1.1rem;
-      line-height: 1.7;
-      color: #2d3436;
+      line-height: 2;
+      color: #333;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 4rem;
+      text-align: center;
+      background: #5F84B0;
+      color: #FFFDF1;
+      border-top: 5px solid #E22B02;
+    }
+
+    footer p {
+      font-family: 'Lilita One', cursive;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
     }
 
     /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+      }
+
+      .hero h1 {
+        font-size: 5rem;
+      }
+
+      .section-title {
+        font-size: 3.5rem;
+      }
+    }
+
     @media (max-width: 768px) {
-      .hero h1 { font-size: 4rem; }
-      .hero p { font-size: 1.3rem; }
-      .year { font-size: 4rem; }
-      .star { width: 150px; height: 150px; }
-      .modal-content { padding: 2rem; }
-      .modal-title { font-size: 2rem; }
-      .projects-grid { grid-template-columns: 1fr; }
+      nav {
+        padding: 1rem 2rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 6rem 2rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        text-shadow: 3px 3px 0 #5F84B0, 6px 6px 0 rgba(95, 132, 176, 0.3);
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      #sobre-mi {
+        padding: 4rem 2rem;
+      }
+
+      #sobre-mi h2 {
+        font-size: 2.5rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
+      .modal-content {
+        margin: 2rem 1rem;
+        padding: 2rem 1.5rem;
+      }
+
+      .modal-title {
+        font-size: 2rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .match-container {
+        width: 300px;
+        height: 120px;
+      }
+
+      .loading-text {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
-  <body>
-    <body>
+<body>
   <!-- LOADER -->
   <div id="loader">
     <div class="match-container">
-      <div class="floor"></div>
-      <div class="match">
+      <div class="match-floor"></div>
+      <div class="match-stick">
         <div class="match-head"></div>
-        <div class="spark"></div>
+        <div class="match-flame">
+          <div class="flame-outer"></div>
+          <div class="flame-inner"></div>
+        </div>
       </div>
+      <div class="match-spark"></div>
     </div>
-    <div class="loading-text">cargando...</div>
+    <div class="loading-text">encendiendo...</div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div id="main-content">
-    <section class="hero">
-      <div class="star">
-        <svg viewBox="0 0 100 100">
-          <polygon points="50,5 61,38 95,38 68,58 79,91 50,71 21,91 32,58 5,38 39,38" />
-        </svg>
-      </div>
-      <h1>RETRO</h1>
-      <p>proyectos en el tiempo</p>
-    </section>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">FOSFORITO</div>
+    <ul class="nav-links">
+      <li><a href="#sobre-mi">Sobre Mí</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="https://instagram.com/_a.fosforito_" target="_blank">Instagram</a></li>
+    </ul>
+  </nav>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="year">2020</div>
-        <div class="projects-grid">
-          <div class="project-card" onclick="openModal('Groove Candy', '2024')">
-            <div class="project-image">IMG</div>
-            <div class="project-info">
-              <div class="project-title">Groove Candy</div>
-              <div class="project-desc">Diseño de identidad visual para festival de música vintage</div>
-            </div>
-          </div>
-          <div class="project-card" onclick="openModal('Space Open', '2024')">
-            <div class="project-image">IMG</div>
-            <div class="project-info">
-              <div class="project-title">Space Open</div>
-              <div class="project-desc">Galería de arte contemporáneo con estética retro</div>
-            </div>
-          </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>FOSFORITO</h1>
+      <p>Diseño & Dirección Creativa</p>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi">
+    <h2>SOBRE MÍ</h2>
+    <p>
+      Soy diseñador y director creativo especializado en identidad visual y branding con estética retro. 
+      Mi trabajo fusiona la nostalgia de los años 80 con soluciones contemporáneas, creando identidades 
+      únicas que capturan la esencia de cada proyecto. Con experiencia en festivales de música, 
+      galerías de arte y proyectos culturales, busco siempre contar historias visuales memorables 
+      que combinan lo vintage con lo moderno.
+    </p>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+    <h2 class="section-title">PROYECTOS</h2>
+    <div class="projects-grid">
+      <!-- Proyecto 1 -->
+      <div class="project-card" onclick="openProject(0)">
+        <div class="project-card-image">IMG</div>
+        <div class="project-card-info">
+          <div class="project-card-number">01</div>
+          <h3 class="project-card-title">GROOVE CANDY</h3>
+          <p class="project-card-desc">
+            Festival de música vintage que celebra los sonidos de los 60s y 70s
+          </p>
+          <p class="project-card-year">2024</p>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="year">2021</div>
-        <div class="projects-grid">
-          <div class="project-card" onclick="openModal('Underground Rhythms', '2023')">
-            <div class="project-image">IMG</div>
-            <div class="project-info">
-              <div class="project-title">Underground Rhythms</div>
-              <div class="project-desc">Branding para sello discográfico independiente</div>
-            </div>
-          </div>
-          <div class="project-card" onclick="openModal('Maverick Design', '2023')">
-            <div class="project-image">IMG</div>
-            <div class="project-info">
-              <div class="project-title">Maverick Design</div>
-              <div class="project-desc">Portfolio digital con vibras de los 70s</div>
-            </div>
-          </div>
+      <!-- Proyecto 2 -->
+      <div class="project-card" onclick="openProject(1)">
+        <div class="project-card-image">IMG</div>
+        <div class="project-card-info">
+          <div class="project-card-number">02</div>
+          <h3 class="project-card-title">SPACE OPEN</h3>
+          <p class="project-card-desc">
+            Galería de arte contemporáneo con estética retro-futurista
+          </p>
+          <p class="project-card-year">2024</p>
         </div>
       </div>
 
-      <div class="timeline-item">
-        <div class="year">2022</div>
-        <div class="projects-grid">
-          <div class="project-card" onclick="openModal('Vinyl Dreams', '2022')">
-            <div class="project-image">IMG</div>
-            <div class="project-info">
-              <div class="project-title">Vinyl Dreams</div>
-              <div class="project-desc">Tienda online de vinilos vintage</div>
-            </div>
-          </div>
-          <div class="project-card" onclick="openModal('Retro Wave', '2022')">
-            <div class="project-image">IMG</div>
-            <div class="project-info">
-              <div class="project-title">Retro Wave</div>
-              <div class="project-desc">Podcast de música y cultura de los 60s-80s</div>
-            </div>
-          </div>
-          <div class="project-card" onclick="openModal('Analog Studio', '2022')">
-            <div class="project-image">IMG</div>
-            <div class="project-info">
-              <div class="project-title">Analog Studio</div>
-              <div class="project-desc">Estudio de grabación con equipos vintage</div>
-            </div>
-            <div class="timeline-item">
-        <div class="year">2022</div>
-        <div class="projects-grid">
-          <div class="project-card" onclick="openModal('Vinyl Dreams', '2022')">
-            <div class="project-image">IMG</div>
-            <div class="project-info">
-              <div class="project-title">Vinyl Dreams</div>
-              <div class="project-desc">Tienda online de vinilos vintage</div>
-            </div>
-          </div>
-          <div class="project-card" onclick="openModal('Retro Wave', '2022')">
-            <div class="project-image">IMG</div>
-            <div class="project-info">
-              <div class="project-title">Retro Wave</div>
-              <div class="project-desc">Podcast de música y cultura de los 60s-80s</div>
-            </div>
-          </div>
-          <div class="project-card" onclick="openModal('Analog Studio', '2022')">
-            <div class="project-image">IMG</div>
-            <div class="project-info">
-              <div class="project-title">Analog Studio</div>
-              <div class="project-desc">Estudio de grabación con equipos vintage</div>
-            </div>
-          </div>
+      <!-- Proyecto 3 -->
+      <div class="project-card" onclick="openProject(2)">
+        <div class="project-card-image">IMG</div>
+        <div class="project-card-info">
+          <div class="project-card-number">03</div>
+          <h3 class="project-card-title">UNDERGROUND RHYTHMS</h3>
+          <p class="project-card-desc">
+            Sello discográfico independiente con sonidos experimentales
+          </p>
+          <p class="project-card-year">2023</p>
+        </div>
+      </div>
+
+      <!-- Proyecto 4 -->
+      <div class="project-card" onclick="openProject(3)">
+        <div class="project-card-image">IMG</div>
+        <div class="project-card-info">
+          <div class="project-card-number">04</div>
+          <h3 class="project-card-title">VINYL DREAMS</h3>
+          <p class="project-card-desc">
+            E-commerce de vinilos raros y coleccionables
+          </p>
+          <p class="project-card-year">2022</p>
+        </div>
+      </div>
+
+      <!-- Proyecto 5 -->
+      <div class="project-card" onclick="openProject(4)">
+        <div class="project-card-image">IMG</div>
+        <div class="project-card-info">
+          <div class="project-card-number">05</div>
+          <h3 class="project-card-title">RETRO WAVE</h3>
+          <p class="project-card-desc">
+            Podcast sobre música y cultura de los 60s-80s
+          </p>
+          <p class="project-card-year">2022</p>
+        </div>
+      </div>
+
+      <!-- Proyecto 6 -->
+      <div class="project-card" onclick="openProject(5)">
+        <div class="project-card-image">IMG</div>
+        <div class="project-card-info">
+          <div class="project-card-number">06</div>
+          <h3 class="project-card-title">ANALOG STUDIO</h3>
+          <p class="project-card-desc">
+            Estudio de grabación con equipos vintage
+          </p>
+          <p class="project-card-year">2022</p>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- MODAL -->
   <div class="modal" id="modal">
     <div class="modal-content">
-      <button class="close-modal" onclick="closeModal()">✕</button>
-      <h2 class="modal-title" id="modal-title">Proyecto</h2>
-      <div class="modal-images">
-        <div class="modal-image">FOTO 1</div>
-        <div class="modal-image">FOTO 2</div>
-        <div class="modal-image">FOTO 3</div>
+      <div class="modal-nav">
+        <button class="modal-back" onclick="closeModal()">← VOLVER</button>
+        <div style="text-align: right;">
+          <div class="modal-title" id="modal-title">PROYECTO</div>
+          <div class="modal-year" id="modal-year">2024</div>
+        </div>
       </div>
-      <div class="modal-description" id="modal-description">
-        Descripción detallada del proyecto, objetivos, desafíos y soluciones implementadas.
+
+      <p class="modal-description" id="modal-description">
+        Descripción del proyecto
+      </p>
+
+      <div class="modal-details">
+        <div class="detail-item">
+          <h4>CLIENTE</h4>
+          <p id="modal-client">Cliente</p>
+        </div>
+        <div class="detail-item">
+          <h4>SERVICIOS</h4>
+          <p id="modal-services">Servicios</p>
+        </div>
+        <div class="detail-item">
+          <h4>DURACIÓN</h4>
+          <p id="modal-duration">Duración</p>
+        </div>
       </div>
+
+      <div class="modal-gallery">
+        <h3>PROCESO CREATIVO</h3>
+        <div class="gallery-grid" id="gallery-grid">
+          <div class="gallery-item">FOTO 1</div>
+          <div class="gallery-item">FOTO 2</div>
+          <div class="gallery-item">FOTO 3</div>
+          <div class="gallery-item">FOTO 4</div>
+        </div>
+      </div>
+
       <div class="modal-process">
-        <h3>Proceso</h3>
-        <p id="modal-process">Investigación inicial, bocetos, iteraciones de diseño, pruebas de usuario y entrega final. El proyecto se desarrolló en colaboración estrecha con el cliente.</p>
+        <h3>DESARROLLO</h3>
+        <p id="modal-process-text">
+          Proceso de desarrollo del proyecto
+        </p>
       </div>
     </div>
   </div>
 
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2024 FOSFORITO - TODOS LOS DERECHOS RESERVADOS</p>
+  </footer>
+
   <script>
+    // Datos de los proyectos
+    const projects = [
+      {
+        title: 'GROOVE CANDY',
+        year: '2024',
+        description: 'Identidad visual completa para festival de música vintage que celebra los sonidos de los 60s y 70s. El proyecto incluye diseño de logo, aplicaciones en merchandising, señalética y material promocional con una paleta de colores cálidos y tipografía expresiva.',
+        client: 'Groove Candy Festival',
+        services: 'Branding, Diseño Gráfico, Dirección de Arte',
+        duration: '3 meses',
+        process: 'Investigación profunda en pósters de festivales vintage, selección de paleta de colores cálidos inspirada en los 70s, creación de sistema tipográfico flexible con fuentes psicodélicas, diseño de aplicaciones en merchandising (camisetas, posters, pases), desarrollo de señalética para el evento, y creación de guidelines completos de marca.'
+      },
+      {
+        title: 'SPACE OPEN',
+        year: '2024',
+        description: 'Galería de arte contemporáneo que fusiona el pasado con el futuro. Diseño minimalista con toques retro que crea un espacio visual único. El proyecto abarca desde la identidad corporativa hasta el diseño de catálogos, invitaciones y presencia digital.',
+        client: 'Space Open Gallery',
+        services: 'Identidad Visual, Editorial, Digital',
+        duration: '4 meses',
+        process: 'Análisis de galerías contemporáneas y espacios culturales, conceptualización del nombre y su significado, diseño de logo minimalista con elementos retro-futuristas, desarrollo de sistema de señalética para la galería, creación de templates para catálogos de exposiciones, diseño de invitaciones y material promocional, y desarrollo de sitio web con estética limpia y moderna.'
+      },
+      {
+        title: 'UNDERGROUND RHYTHMS',
+        year: '2023',
+        description: 'Branding audaz y auténtico para sello discográfico independiente enfocado en sonidos experimentales. Creación de sistema de identidad flexible que se adapta a cada release manteniendo la coherencia de marca. Incluye templates para covers, guidelines y presencia en redes sociales.',
+        client: 'Underground Rhythms Records',
+        services: 'Branding, Templates, Social Media',
+        duration: '2 meses',
+        process: 'Entrevistas profundas con artistas del sello para entender su visión, exploración de estéticas underground y contraculturales, diseño de identidad visual flexible y disruptiva, creación de templates para artwork de releases, desarrollo de sistema de colores y tipografías adaptables, diseño de assets para redes sociales, y creación de guidelines de marca completos.'
+      },
+      {
+        title: 'VINYL DREAMS',
+        year: '2022',
+        description: 'E-commerce especializado en vinilos raros y coleccionables. UX intuitivo con estética vintage que transporta a los usuarios a la era dorada del vinilo. Diseño de sistema de filtros, arquitectura de información y experiencia de compra optimizada para coleccionistas.',
+        client: 'Vinyl Dreams Shop',
+        services: 'UX/UI, E-commerce, Branding Digital',
+        duration: '5 meses',
+        process: 'Research de competencia en el mercado de vinilos online, análisis de comportamiento de coleccionistas, diseño de arquitectura de información intuitiva, creación de sistema de filtros avanzado por género/año/artista, diseño de interfaz con estética vintage pero funcional, desarrollo de carrito de compra optimizado, integración con plataforma de pago, y testing con usuarios reales.'
+      },
+      {
+        title: 'RETRO WAVE',
+        year: '2022',
+        description: 'Podcast semanal sobre la historia de la música de los 60s-80s. Identidad visual cohesiva para todas las plataformas con diseño de cover art template, creación de assets para redes sociales, y desarrollo de identidad sonora que complementa el contenido.',
+        client: 'Retro Wave Podcast',
+        services: 'Identidad Visual, Social Media, Audio Branding',
+        duration: '2 meses',
+        process: 'Investigación de tendencias en podcasts musicales, diseño de cover art principal con elementos retro icónicos, creación de template flexible para episodios, desarrollo de paleta de colores inspirada en los 80s, diseño de assets animados para redes sociales, creación de intro/outro musical, y diseño de merchandise para oyentes.'
+      },
+      {
+        title: 'ANALOG STUDIO',
+        year: '2022',
+        description: 'Estudio de grabación boutique especializado en sonido analógico. Branding que refleja la calidez del sonido vintage con diseño de papelería, website con galería de proyectos, y material promocional que destaca los equipos vintage del estudio.',
+        client: 'Analog Studio Records',
+        services: 'Branding, Web Design, Fotografía',
+        duration: '3 meses',
+        process: 'Tour completo por el estudio para entender el espacio, sesión fotográfica profesional de equipos vintage (consolas, micrófonos, cintas), diseño de identidad que evoca calidez analógica, creación de papelería y tarjetas de presentación, desarrollo de website con galería de proyectos grabados, diseño de tarifas y paquetes de servicios, y creación de press kit digital.'
+      }
+    ];
+
     // Loader
-    setTimeout(() => {
-      document.getElementById('loader').classList.add('hidden');
-      document.getElementById('main-content').classList.add('visible');
-    }, 3500);
-
-    // Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.timeline-item').forEach(item => {
-      observer.observe(item);
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+      }, 3500);
     });
 
-    // Modal functions
-    function openModal(title, year) {
-      const modal = document.getElementById('modal');
-      document.getElementById('modal-title').textContent = title + ' - ' + year;
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Abrir proyecto en modal
+    function openProject(index) {
+      const project = projects[index];
+      document.getElementById('modal-title').textContent = project.title;
+      document.getElementById('modal-year').textContent = project.year;
+      document.getElementById('modal-description').textContent = project.description;
+      document.getElementById('modal-client').textContent = project.client;
+      document.getElementById('modal-services').textContent = project.services;
+      document.getElementById('modal-duration').textContent = project.duration;
+      document.getElementById('modal-process-text').textContent = project.process;
       
-      const descriptions = {
-        'Groove Candy': 'Festival de música que celebra los sonidos vintage. Creamos una identidad visual completa que captura la esencia de los 60s y 70s.',
-        'Space Open': 'Galería de arte contemporáneo que fusiona el pasado con el futuro. Diseño minimalista con toques retro.',
-        'Underground Rhythms': 'Sello discográfico independiente enfocado en sonidos experimentales. Branding audaz y auténtico.',
-        'Maverick Design': 'Portfolio digital que respira nostalgia pero funciona con tecnología moderna.',
-        'Vinyl Dreams': 'E-commerce especializado en vinilos raros y coleccionables. UX intuitivo con estética vintage.',
-        'Retro Wave': 'Podcast semanal sobre la historia de la música. Identidad visual cohesiva para todas las plataformas.',
-        'Analog Studio': 'Estudio de grabación boutique. Branding que refleja la calidez del sonido analógico.'
-      };
-      
-      const processes = {
-        'Groove Candy': 'Investigación profunda en pósters de festivales vintage, selección de paleta de colores cálidos, creación de sistema tipográfico flexible, diseño de aplicaciones en merchandising.',
-        'Space Open': 'Análisis de galerías contemporáneas, conceptualización del nombre, diseño de logo minimalista, desarrollo de sistema de señalética.',
-        'Underground Rhythms': 'Entrevistas con artistas del sello, exploración de estéticas underground, diseño de templates para releases, creación de guidelines de marca.',
-        'Maverick Design': 'Wireframing, prototipado en Figma, desarrollo front-end con animaciones sutiles, optimización de performance.',
-        'Vinyl Dreams': 'Research de competencia, arquitectura de información, diseño de sistema de filtros, integración con plataforma de pago.',
-        'Retro Wave': 'Diseño de cover art template, creación de assets para redes sociales, desarrollo de identidad sonora.',
-        'Analog Studio': 'Tour por el estudio, sesión fotográfica de equipos vintage, diseño de papelería, website con galería de proyectos.'
-      };
-      
-      document.getElementById('modal-description').textContent = descriptions[title] || 'Descripción del proyecto.';
-      document.getElementById('modal-process').textContent = processes[title] || 'Proceso creativo del proyecto.';
-      
-      modal.classList.add('active');
+      document.getElementById('modal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
+    // Cerrar modal
     function closeModal() {
       document.getElementById('modal').classList.remove('active');
       document.body.style.overflow = 'auto';
     }
 
-    // Close modal on outside click
+    // Cerrar modal al hacer clic fuera
     document.getElementById('modal').addEventListener('click', (e) => {
       if (e.target.id === 'modal') {
         closeModal();
       }
     });
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.getElementById('modal').classList.contains('active')) {
+        closeModal();
+      }
+    });
   </script>
-  </body>
+</body>
 </html>
