@@ -4,14 +4,190 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="styles.css" type="text/css" href="styles.css">
+    <link rel="style.css" type="text/css" href="style.css">
     
     </head>
     <title>Fosfolio</title>
   </head>
   <body>
-    <h1>Fosfolio</h1>
-    <h2>Pruebas de tipografía</h2>
-    <b></b>
+    <body>
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="match-container">
+      <div class="floor"></div>
+      <div class="match">
+        <div class="match-head"></div>
+        <div class="spark"></div>
+      </div>
+    </div>
+    <div class="loading-text">cargando...</div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main-content">
+    <section class="hero">
+      <div class="star">
+        <svg viewBox="0 0 100 100">
+          <polygon points="50,5 61,38 95,38 68,58 79,91 50,71 21,91 32,58 5,38 39,38" />
+        </svg>
+      </div>
+      <h1>RETRO</h1>
+      <p>proyectos en el tiempo</p>
+    </section>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="year">2020</div>
+        <div class="projects-grid">
+          <div class="project-card" onclick="openModal('Groove Candy', '2020')">
+            <div class="project-image">IMG</div>
+            <div class="project-info">
+              <div class="project-title">Groove Candy</div>
+              <div class="project-desc">Diseño de identidad visual para festival de música vintage</div>
+            </div>
+          </div>
+          <div class="project-card" onclick="openModal('Space Open', '2020')">
+            <div class="project-image">IMG</div>
+            <div class="project-info">
+              <div class="project-title">Space Open</div>
+              <div class="project-desc">Galería de arte contemporáneo con estética retro</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2021</div>
+        <div class="projects-grid">
+          <div class="project-card" onclick="openModal('Underground Rhythms', '2021')">
+            <div class="project-image">IMG</div>
+            <div class="project-info">
+              <div class="project-title">Underground Rhythms</div>
+              <div class="project-desc">Branding para sello discográfico independiente</div>
+            </div>
+          </div>
+          <div class="project-card" onclick="openModal('Maverick Design', '2021')">
+            <div class="project-image">IMG</div>
+            <div class="project-info">
+              <div class="project-title">Maverick Design</div>
+              <div class="project-desc">Portfolio digital con vibras de los 70s</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="year">2022</div>
+        <div class="projects-grid">
+          <div class="project-card" onclick="openModal('Vinyl Dreams', '2022')">
+            <div class="project-image">IMG</div>
+            <div class="project-info">
+              <div class="project-title">Vinyl Dreams</div>
+              <div class="project-desc">Tienda online de vinilos vintage</div>
+            </div>
+          </div>
+          <div class="project-card" onclick="openModal('Retro Wave', '2022')">
+            <div class="project-image">IMG</div>
+            <div class="project-info">
+              <div class="project-title">Retro Wave</div>
+              <div class="project-desc">Podcast de música y cultura de los 60s-80s</div>
+            </div>
+          </div>
+          <div class="project-card" onclick="openModal('Analog Studio', '2022')">
+            <div class="project-image">IMG</div>
+            <div class="project-info">
+              <div class="project-title">Analog Studio</div>
+              <div class="project-desc">Estudio de grabación con equipos vintage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">✕</button>
+      <h2 class="modal-title" id="modal-title">Proyecto</h2>
+      <div class="modal-images">
+        <div class="modal-image">FOTO 1</div>
+        <div class="modal-image">FOTO 2</div>
+        <div class="modal-image">FOTO 3</div>
+      </div>
+      <div class="modal-description" id="modal-description">
+        Descripción detallada del proyecto, objetivos, desafíos y soluciones implementadas.
+      </div>
+      <div class="modal-process">
+        <h3>Proceso</h3>
+        <p id="modal-process">Investigación inicial, bocetos, iteraciones de diseño, pruebas de usuario y entrega final. El proyecto se desarrolló en colaboración estrecha con el cliente.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Loader
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('main-content').classList.add('visible');
+    }, 3500);
+
+    // Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      observer.observe(item);
+    });
+
+    // Modal functions
+    function openModal(title, year) {
+      const modal = document.getElementById('modal');
+      document.getElementById('modal-title').textContent = title + ' - ' + year;
+      
+      const descriptions = {
+        'Groove Candy': 'Festival de música que celebra los sonidos vintage. Creamos una identidad visual completa que captura la esencia de los 60s y 70s.',
+        'Space Open': 'Galería de arte contemporáneo que fusiona el pasado con el futuro. Diseño minimalista con toques retro.',
+        'Underground Rhythms': 'Sello discográfico independiente enfocado en sonidos experimentales. Branding audaz y auténtico.',
+        'Maverick Design': 'Portfolio digital que respira nostalgia pero funciona con tecnología moderna.',
+        'Vinyl Dreams': 'E-commerce especializado en vinilos raros y coleccionables. UX intuitivo con estética vintage.',
+        'Retro Wave': 'Podcast semanal sobre la historia de la música. Identidad visual cohesiva para todas las plataformas.',
+        'Analog Studio': 'Estudio de grabación boutique. Branding que refleja la calidez del sonido analógico.'
+      };
+      
+      const processes = {
+        'Groove Candy': 'Investigación profunda en pósters de festivales vintage, selección de paleta de colores cálidos, creación de sistema tipográfico flexible, diseño de aplicaciones en merchandising.',
+        'Space Open': 'Análisis de galerías contemporáneas, conceptualización del nombre, diseño de logo minimalista, desarrollo de sistema de señalética.',
+        'Underground Rhythms': 'Entrevistas con artistas del sello, exploración de estéticas underground, diseño de templates para releases, creación de guidelines de marca.',
+        'Maverick Design': 'Wireframing, prototipado en Figma, desarrollo front-end con animaciones sutiles, optimización de performance.',
+        'Vinyl Dreams': 'Research de competencia, arquitectura de información, diseño de sistema de filtros, integración con plataforma de pago.',
+        'Retro Wave': 'Diseño de cover art template, creación de assets para redes sociales, desarrollo de identidad sonora.',
+        'Analog Studio': 'Tour por el estudio, sesión fotográfica de equipos vintage, diseño de papelería, website con galería de proyectos.'
+      };
+      
+      document.getElementById('modal-description').textContent = descriptions[title] || 'Descripción del proyecto.';
+      document.getElementById('modal-process').textContent = processes[title] || 'Proceso creativo del proyecto.';
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal on outside click
+    document.getElementById('modal').addEventListener('click', (e) => {
+      if (e.target.id === 'modal') {
+        closeModal();
+      }
+    });
+  </script>
   </body>
 </html>
