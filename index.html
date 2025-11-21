@@ -670,6 +670,62 @@
       .loading-text {
         font-size: 1.8rem;
       }
+      /* ABOUT SECTION */
+    #sobre-mi {
+      min-height: 60vh;
+      padding: 8rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .sobre-mi-content {
+      grid-column: 1;
+    }
+
+    .sobre-mi-content h2 {
+      font-family: 'Lilita One', cursive;
+      font-size: 4rem;
+      letter-spacing: 4px;
+      margin-bottom: 3rem;
+      color: #5F84B0;
+      text-shadow: 3px 3px 0 #E22B02;
+    }
+
+    .sobre-mi-content p {
+      font-size: 1.2rem;
+      line-height: 2;
+      color: #333;
+      font-weight: 400;
+    }
+
+    .sobre-mi-image {
+      grid-column: 2;
+      position: relative;
+    }
+
+    .sobre-mi-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border: 6px solid #E22B02;
+      box-shadow: 10px 10px 0 rgba(95, 132, 176, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .sobre-mi-image img:hover {
+      transform: translate(-5px, -5px);
+      box-shadow: 15px 15px 0 rgba(226, 43, 2, 0.3);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     }
   </style>
 </head>
