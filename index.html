@@ -810,6 +810,70 @@
       .loading-text {
         font-size: 1.8rem;
       }
+      /* Screen reader only - oculta visualmente pero accesible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #E22B02;
+  color: #FFFDF1;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 10000;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+/* Usar CSS custom properties para mantenibilidad */
+:root {
+  --color-primary: #E22B02;
+  --color-secondary: #5F84B0;
+  --color-background: #FFFDF1;
+  --color-text: #333;
+  --font-heading: 'Lilita One', cursive;
+  --font-body: 'Raleway', sans-serif;
+  --transition-speed: 0.3s;
+}
+
+/* Reducir movimiento para usuarios con preferencias */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #1a1a1a;
+    --color-text: #f0f0f0;
+  }
+}
+
+/* Mejorar legibilidad */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
     }
   </style>
 </head>
@@ -854,7 +918,7 @@
   <!-- SOBRE MÍ -->
   <section id="sobre-mi">
     <div class="sobre-mi-image">
-      <img src="https://via.placeholder.com/500x500/E22B02/FFFDF1?text=TU+FOTO" alt="Ámbar Martin">
+      <img src="foto.jpg" alt="Ámbar Martin, diseñadora UC, sonriendo en su estudio de trabajo">
     </div>
     <div class="sobre-mi-content">
       <h2>SOBRE MÍ</h2>
@@ -1177,6 +1241,50 @@ Si bien tengo afinidad por estos ámbitos, también poseo conocimientos en otras
       document.getElementById('modal-services').textContent = project.services;
       document.getElementById('modal-duration').textContent = project.duration;
       document.getElementById('modal-process-text').textContent = project.process;
+
+      // Parte faltante de java que es agregar navegación por teclado a las cajas de fósforos
+document.querySelectorAll('.matchbox').forEach((box, index) => {
+  box.setAttribute('tabindex', '0');
+  box.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openProject(index);
+    }
+  });
+});
+
+// Trap focus dentro del modal cuando está abierto
+function openProject(index) {
+  // ... código existente ...
+  
+  // Focus en el botón de cerrar cuando se abre
+  setTimeout(() => {
+    document.querySelector('.modal-back').focus();
+  }, 100);
+  
+  // Trap focus
+  trapFocus(document.getElementById('modal'));
+}
+
+function trapFocus(element) {
+  const focusableElements = element.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
+
+  element.addEventListener('keydown', function(e) {
+    if (e.key === 'Tab') {
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    }
+  });
+}
       
       // Actualizar imagen principal
       const mainImageContainer = document.getElementById('modal-main-image');
